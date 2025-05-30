@@ -8,17 +8,20 @@
                     <div class="card-header">
                         <b>List Users</b>
                     </div>
+                    {{-- users list --}}
                     <div class="card-body">
-                        <div class="card card-body">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div style="width: 50px; height:50px; background:gray;" class="rounded rounded-circle">
-                                </div>
-                                <div class="user-profile">
-                                    <b>Mamat</b>
-                                    <small class="d-block">mamat@mail.com</small>
+                        @foreach ($users as $user)
+                            <div class="card card-body my-2">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <div style="width: 50px; height:50px; background:gray;" class="rounded rounded-circle">
+                                    </div>
+                                    <div class="user-profile">
+                                        <b>{{ $user->name }} {{ auth()->user()->id == $user->id ? '(You)' : '' }}</b>
+                                        <small class="d-block">{{ $user->email }}</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
